@@ -1,37 +1,76 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.header {
+    background: linear-gradient(to right, #4a90e2, #9013fe);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
-  color: white;
-  animation: fadeIn 1.5s;
+.header a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.header a:hover {
+    color: #ffcc00;
 }
 
-h1, h2 {
-  margin: 0;
-  padding: 0;
-  transition: transform 0.3s;
+.hero {
+    background-image: url('hero-bg.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
 }
 
-h1:hover, h2:hover {
-  transform: scale(1.05);
+.about {
+    padding: 50px;
+    text-align: center;
 }
 
-@media (max-width: 600px) {
-  h1 {
-    font-size: 24px;
-  }
-  h2 {
-    font-size: 20px;
-  }
+.vision-mission {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+.features {
+    background: #f9f9f9;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.team {
+    background: #ffffff;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.testimonials {
+    background: #4a90e2;
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+
+.footer {
+    background: linear-gradient(to right, #9013fe, #4a90e2);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+@media screen and (max-width: 768px) {
+    .header, .vision-mission, .features, .team {
+        flex-direction: column;
+        align-items: center;
+    }
 }
