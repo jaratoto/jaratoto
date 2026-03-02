@@ -1,54 +1,37 @@
-.landing-page {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #333;
-    padding: 20px;
-    transition: background-color 0.5s, color 0.5s;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.landing-page.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: white;
+  animation: fadeIn 1.5s;
 }
 
-.header {
-    text-align: center;
-    padding: 10px;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.header h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
+h1, h2 {
+  margin: 0;
+  padding: 0;
+  transition: transform 0.3s;
 }
 
-.header p {
-    font-size: 1.2em;
-}
-
-.button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #0056b3;
+h1:hover, h2:hover {
+  transform: scale(1.05);
 }
 
 @media (max-width: 600px) {
-    .header h1 {
-        font-size: 2em;
-    }
-    .header p {
-        font-size: 1em;
-    }
-    .button {
-        padding: 8px 16px;
-        font-size: 0.9em;
-    }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 20px;
+  }
 }
