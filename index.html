@@ -1608,6 +1608,681 @@ a:focus-visible,button:focus-visible{
   a[href]::after{content:" ("attr(href)")";font-size:10px;color:#555}
   a[href^="#"]::after,a[href^="https://dub"]::after{content:""}
 }
+
+/* ─────────────────────────────────────────
+   MARQUEE ANNOUNCE BAR
+───────────────────────────────────────── */
+.ann-marquee-wrap{
+  overflow:hidden;white-space:nowrap;flex:1;min-width:0;
+}
+.ann-marquee-track{
+  display:inline-block;
+  animation:annScroll 32s linear infinite;
+}
+.ann-marquee-track:hover{animation-play-state:paused}
+@keyframes annScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ann-cta-link{
+  white-space:nowrap;padding:0 14px;font-weight:700;font-size:12px;
+  border-left:1px solid rgba(0,0,0,.12);flex-shrink:0;
+  display:flex;align-items:center;
+}
+.ann-close-btn{
+  padding:0 12px;border-left:1px solid rgba(0,0,0,.12);
+  background:none;border-top:none;border-bottom:none;border-right:none;
+  cursor:pointer;color:#000;font-size:14px;font-weight:700;
+  opacity:.6;transition:opacity .2s;align-self:stretch;
+  display:flex;align-items:center;
+}
+.ann-close-btn:hover{opacity:1}
+
+/* ─────────────────────────────────────────
+   STATS BAR
+───────────────────────────────────────── */
+.stats-bar-new{
+  background:#0a0a0a;
+  border-bottom:1px solid #1c1c1c;
+}
+.stats-bar-new-inner{
+  max-width:1380px;margin:0 auto;
+  display:flex;align-items:stretch;
+}
+.stat-item-new{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:14px 12px;
+  border-right:1px solid #1c1c1c;
+}
+.stat-item-new:last-child{border-right:none}
+.stat-num-new{
+  font-size:22px;font-weight:900;line-height:1;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#C8960C,#FFD700);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:-.02em;
+}
+.stat-lbl-new{
+  font-size:10px;color:rgba(255,255,255,.4);
+  margin-top:3px;text-transform:uppercase;letter-spacing:.05em;font-weight:500;
+}
+@media(max-width:640px){
+  .stats-bar-new-inner{flex-wrap:wrap}
+  .stat-item-new{flex:0 0 50%;border-bottom:1px solid #1c1c1c}
+  .stat-item-new:nth-child(even){border-right:none}
+  .stat-item-new:nth-last-child(-n+2){border-bottom:none}
+}
+
+/* ─────────────────────────────────────────
+   LIVE DRAW WIDGET
+───────────────────────────────────────── */
+.ldw{
+  width:100%;max-width:400px;
+  margin-top:16px;
+  background:#0d0d1a;
+  border-radius:14px;
+  border:1px solid rgba(255,215,0,.18);
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+}
+.ldw-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;
+  background:rgba(255,215,0,.07);
+  border-bottom:1px solid rgba(255,215,0,.1);
+}
+.ldw-head-title{font-size:11px;font-weight:700;color:#FFD700;letter-spacing:.12em;text-transform:uppercase}
+.ldw-head-live{display:flex;align-items:center;gap:5px;font-size:10px;color:#22c55e;font-weight:700}
+.ldw-live-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:ldwDot 1.2s ease-in-out infinite}
+@keyframes ldwDot{0%,100%{opacity:1}50%{opacity:.3}}
+.ldw-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.05)}
+.ldw-tab-btn{
+  flex:1;padding:8px 4px;text-align:center;
+  font-size:10px;font-weight:700;color:rgba(255,255,255,.3);
+  cursor:pointer;transition:all .2s;
+  border-bottom:2px solid transparent;letter-spacing:.04em;
+  background:none;border-top:none;border-left:none;border-right:none;
+  font-family:'Poppins',sans-serif;
+}
+.ldw-tab-btn.ldw-active{color:#FFD700;border-bottom-color:#FFD700;background:rgba(255,215,0,.04)}
+.ldw-tab-btn:hover:not(.ldw-active){color:rgba(255,255,255,.55)}
+.ldw-body-inner{padding:14px 16px}
+.ldw-pasaran-date{font-size:10px;color:rgba(255,255,255,.3);margin-bottom:10px;text-align:center}
+.ldw-balls{display:flex;gap:8px;justify-content:center;margin-bottom:10px}
+.ldw-ball{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,#181828,#0f0f20);
+  border:2px solid rgba(255,215,0,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:900;color:#FFD700;
+  font-family:'Poppins',monospace;
+  transition:all .35s;
+}
+.ldw-ball.ldw-spin{animation:ldwBounce .5s ease-in-out infinite alternate}
+@keyframes ldwBounce{0%{transform:translateY(-2px);opacity:.7}100%{transform:translateY(2px);opacity:1}}
+.ldw-ball.ldw-reveal{
+  border-color:rgba(255,215,0,.55);
+  background:linear-gradient(135deg,#241800,#3a2500);
+  box-shadow:0 0 14px rgba(255,215,0,.2);
+  animation:none;
+}
+.ldw-details{display:flex;gap:6px;justify-content:center;margin-bottom:10px}
+.ldw-det-badge{
+  font-size:10px;font-weight:700;padding:2px 9px;border-radius:4px;
+  background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.18);color:rgba(255,215,0,.6);
+}
+.ldw-next-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:10px;border-top:1px solid rgba(255,255,255,.05);
+}
+.ldw-next-lbl{font-size:10px;color:rgba(255,255,255,.3)}
+.ldw-next-val{font-size:11px;font-weight:800;color:#FFD700;font-family:'Poppins',monospace}
+
+/* ─────────────────────────────────────────
+   WIN NOTIFICATION TICKER
+───────────────────────────────────────── */
+#win-ticker{
+  position:fixed;bottom:90px;left:16px;z-index:997;
+  display:flex;flex-direction:column;gap:8px;
+  pointer-events:none;
+}
+.win-toast{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(8,8,18,.93);
+  border:1px solid rgba(255,215,0,.25);
+  border-left:3px solid #FFD700;
+  border-radius:10px;padding:10px 14px;
+  box-shadow:0 6px 24px rgba(0,0,0,.45);
+  backdrop-filter:blur(10px);
+  max-width:230px;pointer-events:none;
+  animation:wtoastIn .4s cubic-bezier(.16,1,.3,1) forwards;
+}
+.win-toast.hiding{animation:wtoastOut .35s ease forwards}
+@keyframes wtoastIn{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
+@keyframes wtoastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-18px)}}
+.win-toast-ico{font-size:20px;flex-shrink:0}
+.win-toast-name{font-size:11px;font-weight:700;color:#FFD700;line-height:1.2}
+.win-toast-amt{font-size:13px;font-weight:800;color:#fff;margin-top:1px}
+.win-toast-pas{font-size:10px;color:rgba(255,255,255,.4);margin-top:1px}
+@media(max-width:640px){#win-ticker{display:none}}
+
+/* ─────────────────────────────────────────
+   ENHANCED CHAT POPUP
+───────────────────────────────────────── */
+.chat-pop{
+  position:fixed;bottom:90px;right:24px;z-index:998;
+  width:298px;
+  background:#14142a;
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.55),0 0 0 1px rgba(255,215,0,.12);
+  opacity:0;pointer-events:none;
+  transform:translateY(10px) scale(.97);
+  transition:opacity .28s,transform .28s;
+}
+.chat-pop.chat-open{opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}
+.chat-pop-head{
+  background:linear-gradient(135deg,#0a0a14,#1a0a3e);
+  padding:13px 15px;
+  display:flex;align-items:center;gap:10px;
+  border-bottom:1px solid rgba(255,215,0,.08);
+}
+.chat-pop-av{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#C8960C,#FFD700);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;position:relative;
+}
+.chat-pop-av::after{
+  content:'';position:absolute;bottom:1px;right:1px;
+  width:9px;height:9px;border-radius:50%;
+  background:#22c55e;border:2px solid #14142a;
+}
+.chat-pop-name{font-size:13px;font-weight:700;color:#fff}
+.chat-pop-status{font-size:10px;color:#22c55e;font-weight:600;margin-top:1px}
+.chat-pop-x{
+  margin-left:auto;background:none;border:none;
+  color:rgba(255,255,255,.35);cursor:pointer;font-size:16px;
+  width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.chat-pop-x:hover{color:#fff;background:rgba(255,255,255,.1)}
+.chat-pop-body{padding:14px;display:flex;flex-direction:column;gap:7px;min-height:100px}
+.chat-bubble{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:10px 10px 10px 2px;
+  padding:8px 12px;font-size:12px;
+  color:rgba(255,255,255,.8);line-height:1.55;
+  max-width:88%;align-self:flex-start;
+  animation:bubIn .3s ease forwards;
+}
+@keyframes bubIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.chat-typing-ind{
+  display:none;align-items:center;gap:3px;padding:7px 12px;
+}
+.chat-typing-ind span{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,215,0,.45);
+  animation:typDot 1.2s ease-in-out infinite;
+}
+.chat-typing-ind span:nth-child(2){animation-delay:.2s}
+.chat-typing-ind span:nth-child(3){animation-delay:.4s}
+@keyframes typDot{0%,80%,100%{transform:scale(1);opacity:.45}40%{transform:scale(1.35);opacity:1}}
+.chat-pop-foot{padding:10px 13px;border-top:1px solid rgba(255,255,255,.05)}
+.chat-ch-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 12px;border-radius:8px;
+  font-size:12px;font-weight:700;color:#fff;
+  text-decoration:none;transition:all .2s;margin-bottom:7px;
+}
+.chat-ch-btn:last-child{margin-bottom:0}
+.chat-ch-btn:hover{transform:translateX(3px);filter:brightness(1.1)}
+.chat-ch-btn svg{width:16px;height:16px;fill:#fff;flex-shrink:0}
+.chat-ch-wa{background:#128C7E}
+.chat-ch-tg{background:#0088cc}
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║   PREMIUM DARK LUXURY UPGRADE                       ║
+   ╚══════════════════════════════════════════════════════╝ */
+
+/* ── Import premium display font ── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap');
+
+/* ── Premium CSS vars ── */
+:root{
+  --pm-bg:       #08080f;
+  --pm-bg2:      #0c0c18;
+  --pm-surface:  rgba(255,255,255,.04);
+  --pm-border:   rgba(255,215,0,.12);
+  --pm-border2:  rgba(255,255,255,.07);
+  --pm-gold:     #FFD700;
+  --pm-gold2:    #C8960C;
+  --pm-gold3:    #fff3b0;
+  --pm-glow:     rgba(255,215,0,.18);
+  --pm-text:     #e8e4d9;
+  --pm-muted:    rgba(232,228,217,.5);
+  --pm-radius:   14px;
+  --pm-radius2:  10px;
+}
+
+/* ── BODY & GLOBAL ── */
+body{
+  background:var(--pm-bg)!important;
+  color:var(--pm-text)!important;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(200,150,12,.07) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.018'/%3E%3C/svg%3E")!important;
+}
+
+/* ── NAVBAR premium ── */
+.navbar{
+  background:rgba(8,8,15,.82)!important;
+  backdrop-filter:blur(18px) saturate(1.4)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.4)!important;
+  border-bottom:1px solid var(--pm-border)!important;
+  box-shadow:0 1px 0 rgba(255,215,0,.06), 0 4px 24px rgba(0,0,0,.4)!important;
+}
+.nav-link{color:rgba(232,228,217,.75)!important;transition:color .2s!important}
+.nav-link:hover{color:var(--pm-gold)!important}
+.nav-cta-login{
+  background:transparent!important;
+  border:1px solid var(--pm-border)!important;
+  color:var(--pm-gold)!important;
+}
+.nav-cta-login:hover{background:rgba(255,215,0,.08)!important}
+.nav-cta-daftar{
+  background:linear-gradient(135deg,#C8960C,#FFD700)!important;
+  color:#000!important;
+  box-shadow:0 0 18px rgba(255,215,0,.25)!important;
+}
+.nav-cta-daftar:hover{
+  box-shadow:0 0 28px rgba(255,215,0,.4)!important;
+  transform:translateY(-1px)!important;
+}
+
+/* ── LIVE ONLINE BAR ── */
+.live-online-bar{
+  background:rgba(8,8,15,.9)!important;
+  border-bottom:1px solid var(--pm-border)!important;
+  color:var(--pm-muted)!important;
+}
+
+/* ── ANNOUNCE BAR ── */
+.announce-bar{
+  background:linear-gradient(90deg,#1a1000,#2a1a00,#1a1000)!important;
+  color:var(--pm-gold)!important;
+  border-bottom:1px solid rgba(255,215,0,.15)!important;
+}
+
+/* ── BREADCRUMB ── */
+.breadcrumb-bar{
+  background:rgba(8,8,15,.7)!important;
+  border-bottom:1px solid var(--pm-border2)!important;
+}
+.breadcrumb-bar a,.breadcrumb-bar .cur{color:var(--pm-muted)!important}
+.breadcrumb-bar a:hover{color:var(--pm-gold)!important}
+
+/* ── PDP GALLERY PANEL ── */
+.pdp-gallery{
+  background:linear-gradient(180deg,#0a0a16 0%,#0c0c1a 100%)!important;
+  border-right:1px solid var(--pm-border)!important;
+}
+
+/* ── GALLERY MAIN card ── */
+.gallery-main{
+  background:linear-gradient(145deg,#0c0c1e 0%,#12082e 45%,#1a0a3e 70%,#080818 100%)!important;
+  border:1px solid rgba(255,215,0,.2)!important;
+  box-shadow:0 0 40px rgba(100,60,200,.2), inset 0 1px 0 rgba(255,255,255,.06)!important;
+  transition:box-shadow .35s!important;
+}
+.gallery-main:hover{
+  box-shadow:0 0 60px rgba(255,215,0,.12), 0 0 40px rgba(100,60,200,.25), inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+
+/* ── GALLERY THUMBS ── */
+.g-thumb{
+  background:rgba(255,255,255,.04)!important;
+  border:1px solid var(--pm-border2)!important;
+  transition:all .22s!important;
+}
+.g-thumb:hover,.g-thumb.active{
+  border-color:var(--pm-gold)!important;
+  background:rgba(255,215,0,.08)!important;
+  box-shadow:0 0 10px rgba(255,215,0,.2)!important;
+}
+
+/* ── PDP DETAIL PANEL ── */
+.pdp-detail{
+  background:var(--pm-bg2)!important;
+}
+.pd-brand{color:var(--pm-gold)!important;letter-spacing:.12em!important}
+.pd-title{
+  color:#fff!important;
+  font-family:'Poppins',sans-serif!important;
+  background:linear-gradient(135deg,#fff 30%,var(--pm-gold3))!important;
+  -webkit-background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  background-clip:text!important;
+}
+.pd-subtitle{color:var(--pm-muted)!important}
+.pd-review-link{color:var(--pm-gold)!important}
+
+/* ── DARK INFO CARD ── */
+.dark-info-card{
+  background:rgba(255,255,255,.03)!important;
+  border:1px solid var(--pm-border)!important;
+  border-radius:var(--pm-radius)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+.dark-info-box-header{
+  border-bottom:1px solid rgba(255,215,0,.1)!important;
+}
+.dark-info-row{border-bottom:1px solid rgba(255,255,255,.05)!important}
+.dark-info-val{color:var(--pm-gold)!important;font-weight:700!important}
+
+/* ── BONUS BOX ── */
+.bonus-box{
+  background:rgba(255,255,255,.03)!important;
+  border:1px solid var(--pm-border)!important;
+  border-radius:var(--pm-radius)!important;
+}
+.bonus-box-head{border-bottom:1px solid rgba(255,215,0,.1)!important}
+
+/* ── CTA ROYAL UPGRADE ── */
+.cta-royal{
+  background:linear-gradient(135deg,#12082e 0%,#1e0a3e 50%,#0a0a1e 100%)!important;
+  border:1px solid rgba(255,215,0,.25)!important;
+  box-shadow:0 0 40px rgba(255,215,0,.06), inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+.cta-royal::before{
+  background:linear-gradient(135deg,rgba(255,215,0,.06),transparent,rgba(255,215,0,.04))!important;
+}
+.cta-btn-daftar{
+  box-shadow:0 0 24px rgba(255,215,0,.35), 0 4px 16px rgba(0,0,0,.4)!important;
+}
+.cta-btn-daftar:hover{
+  box-shadow:0 0 40px rgba(255,215,0,.55), 0 6px 24px rgba(0,0,0,.5)!important;
+  transform:translateY(-2px) scale(1.01)!important;
+}
+
+/* ── SECTION TITLE premium ── */
+.sec-title{
+  color:#fff!important;
+  font-family:'Poppins',sans-serif!important;
+  position:relative!important;
+}
+.sec-title-bar{
+  border-bottom:1px solid var(--pm-border2)!important;
+  padding-bottom:20px!important;
+  margin-bottom:32px!important;
+}
+
+/* ── ALL SECTION BACKGROUNDS ── */
+.benefits-sec,.cara-daftar-sec,.about-sec,#link-terkait{
+  background:var(--pm-bg)!important;
+}
+.pasaran-sec,.bonus-sec,.compare-sec{
+  background:var(--pm-bg2)!important;
+}
+.rv-sec,.faq-sec{
+  background:linear-gradient(180deg,var(--pm-bg2),var(--pm-bg))!important;
+}
+
+/* ── BENEFIT CARDS ── */
+.benefit-card{
+  background:rgba(255,255,255,.03)!important;
+  border:1px solid var(--pm-border2)!important;
+  border-radius:var(--pm-radius)!important;
+  transition:all .3s!important;
+}
+.benefit-card:hover{
+  background:rgba(255,215,0,.05)!important;
+  border-color:rgba(255,215,0,.25)!important;
+  transform:translateY(-4px)!important;
+  box-shadow:0 8px 32px rgba(0,0,0,.4), 0 0 20px rgba(255,215,0,.08)!important;
+}
+.benefit-card h4{color:#fff!important}
+.benefit-card p{color:var(--pm-muted)!important}
+.b-icon-box{
+  background:rgba(255,215,0,.08)!important;
+  border:1px solid rgba(255,215,0,.15)!important;
+  border-radius:10px!important;
+}
+
+/* ── PASARAN CARDS ── */
+.pasaran-card{
+  background:rgba(255,255,255,.04)!important;
+  border:1px solid var(--pm-border2)!important;
+  border-radius:var(--pm-radius)!important;
+  transition:all .3s!important;
+}
+.pasaran-card:hover{
+  background:rgba(255,215,0,.06)!important;
+  border-color:rgba(255,215,0,.3)!important;
+  transform:translateY(-4px)!important;
+  box-shadow:0 10px 36px rgba(0,0,0,.5), 0 0 24px rgba(255,215,0,.1)!important;
+}
+.pasaran-card .pc-name{color:#fff!important}
+.pasaran-card .pc-time,.pasaran-card .pc-prize{color:var(--pm-muted)!important}
+.pasaran-card .pc-prize strong{color:var(--pm-gold)!important}
+
+/* ── REVIEW CARDS ── */
+.rv-card{
+  background:rgba(255,255,255,.04)!important;
+  border:1px solid var(--pm-border2)!important;
+  border-radius:var(--pm-radius)!important;
+  transition:all .3s!important;
+}
+.rv-card:hover{
+  background:rgba(255,215,0,.05)!important;
+  border-color:rgba(255,215,0,.2)!important;
+  transform:translateY(-3px)!important;
+  box-shadow:0 8px 28px rgba(0,0,0,.4)!important;
+}
+.rv-card .rv-name{color:#fff!important}
+.rv-card .rv-text{color:var(--pm-muted)!important}
+.rv-big-num{
+  background:linear-gradient(135deg,var(--pm-gold),var(--pm-gold3))!important;
+  -webkit-background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  background-clip:text!important;
+}
+
+/* ── FAQ ── */
+.faq-item{
+  border-bottom:1px solid rgba(255,255,255,.06)!important;
+  background:transparent!important;
+}
+.faq-item:hover{background:rgba(255,215,0,.03)!important}
+.faq-q{color:#fff!important}
+.faq-q .faq-icon{
+  color:var(--pm-gold)!important;
+  border:1px solid rgba(255,215,0,.2)!important;
+  background:rgba(255,215,0,.06)!important;
+  border-radius:50%!important;
+  width:26px!important;height:26px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  flex-shrink:0!important;
+  transition:all .2s!important;
+}
+.faq-item.open .faq-icon{
+  background:var(--pm-gold)!important;
+  color:#000!important;
+}
+.faq-body{color:var(--pm-muted)!important}
+.faq-body a{color:var(--pm-gold)!important}
+
+/* ── COMPARE TABLE ── */
+.compare-section{color:var(--pm-text)!important}
+.compare-table th{
+  background:rgba(255,215,0,.08)!important;
+  color:var(--pm-gold)!important;
+  border-color:var(--pm-border)!important;
+}
+.compare-table td{
+  border-color:rgba(255,255,255,.06)!important;
+  color:var(--pm-text)!important;
+  background:transparent!important;
+}
+.compare-table tr:hover td{background:rgba(255,215,0,.03)!important}
+.compare-table .chk-yes{color:#4ade80!important}
+.compare-table .chk-no{color:#f87171!important}
+.compare-highlight td,.compare-table .hl{
+  background:rgba(255,215,0,.05)!important;
+}
+
+/* ── STEP CARDS (cara daftar) ── */
+.step-card,.cd-step{
+  background:rgba(255,255,255,.03)!important;
+  border:1px solid var(--pm-border2)!important;
+  border-radius:var(--pm-radius)!important;
+  transition:all .3s!important;
+}
+.step-card:hover,.cd-step:hover{
+  background:rgba(255,215,0,.04)!important;
+  border-color:rgba(255,215,0,.2)!important;
+  transform:translateY(-3px)!important;
+}
+.step-num,.cd-step-num{
+  background:linear-gradient(135deg,var(--pm-gold2),var(--pm-gold))!important;
+  color:#000!important;
+  font-weight:800!important;
+}
+
+/* ── BONUS PROMO CARDS ── */
+.bonus-promo-card,.bp-card{
+  background:rgba(255,255,255,.04)!important;
+  border:1px solid var(--pm-border2)!important;
+  border-radius:var(--pm-radius)!important;
+  transition:all .3s!important;
+}
+.bonus-promo-card:hover,.bp-card:hover{
+  border-color:rgba(255,215,0,.25)!important;
+  transform:translateY(-4px)!important;
+  box-shadow:0 12px 40px rgba(0,0,0,.5), 0 0 24px rgba(255,215,0,.1)!important;
+}
+.bp-card h4,.bonus-promo-card h4{color:#fff!important}
+.bp-card p,.bonus-promo-card p{color:var(--pm-muted)!important}
+
+/* ── ARTICLE SECTION ── */
+.art-body{color:var(--pm-muted)!important}
+.art-body h3,.art-body h4{color:#fff!important}
+.art-body a{color:var(--pm-gold)!important}
+.art-body strong{color:var(--pm-text)!important}
+.art-toc{
+  background:rgba(255,255,255,.04)!important;
+  border-left:3px solid var(--pm-gold)!important;
+  border-radius:0 var(--pm-radius2) var(--pm-radius2) 0!important;
+}
+.art-toc a{color:var(--pm-muted)!important}
+.art-toc a:hover{color:var(--pm-gold)!important}
+
+/* ── FOOTER ── */
+footer{
+  background:#060609!important;
+  border-top:1px solid var(--pm-border)!important;
+}
+.footer-logo-text{
+  background:linear-gradient(135deg,var(--pm-gold2),var(--pm-gold))!important;
+  -webkit-background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  background-clip:text!important;
+}
+.footer-col h5{color:var(--pm-gold)!important;letter-spacing:.06em!important}
+.footer-col a{color:var(--pm-muted)!important;transition:color .2s!important}
+.footer-col a:hover{color:var(--pm-gold)!important}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.05)!important;
+  color:rgba(232,228,217,.3)!important;
+}
+.footer-links a{color:rgba(232,228,217,.4)!important}
+.footer-links a:hover{color:var(--pm-gold)!important}
+
+/* ── POPUP ── */
+.popup-box{
+  background:linear-gradient(145deg,#0e0e1e,#180a30)!important;
+  border:1px solid rgba(255,215,0,.2)!important;
+  box-shadow:0 0 80px rgba(255,215,0,.1), 0 30px 80px rgba(0,0,0,.6)!important;
+}
+.popup-close{color:rgba(255,255,255,.4)!important}
+.popup-close:hover{color:#fff!important}
+
+/* ── STICKY MOBILE CTA ── */
+.sticky-mobile-cta{
+  background:rgba(6,6,9,.95)!important;
+  backdrop-filter:blur(12px)!important;
+  border-top:1px solid var(--pm-border)!important;
+  box-shadow:0 -4px 24px rgba(0,0,0,.4)!important;
+}
+
+/* ── BACK TO TOP ── */
+#backToTop{
+  background:linear-gradient(135deg,var(--pm-gold2),var(--pm-gold))!important;
+  color:#000!important;
+  box-shadow:0 4px 20px rgba(255,215,0,.3)!important;
+}
+#backToTop:hover{
+  box-shadow:0 6px 28px rgba(255,215,0,.5)!important;
+  transform:translateY(-3px)!important;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--pm-bg)}
+::-webkit-scrollbar-thumb{background:rgba(255,215,0,.25);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,215,0,.45)}
+
+/* ── SELECTION ── */
+::selection{background:rgba(255,215,0,.2);color:#fff}
+
+/* ── LINK TERKAIT / TAG PILLS ── */
+.lt-pill,.link-pill{
+  background:rgba(255,255,255,.04)!important;
+  border-color:var(--pm-border2)!important;
+  color:var(--pm-muted)!important;
+  transition:all .2s!important;
+}
+.lt-pill:hover,.link-pill:hover{
+  background:rgba(255,215,0,.08)!important;
+  border-color:rgba(255,215,0,.25)!important;
+  color:var(--pm-gold)!important;
+}
+
+/* ── CTA BAND ── */
+.cta-band{
+  background:linear-gradient(135deg,#0c0830 0%,#18082a 50%,#080818 100%)!important;
+  border-top:1px solid var(--pm-border)!important;
+  border-bottom:1px solid var(--pm-border)!important;
+}
+.cta-band h2{color:#fff!important}
+.cta-band p{color:var(--pm-muted)!important}
+
+/* ── INPUT / FORMS ── */
+input,select,textarea{
+  background:rgba(255,255,255,.05)!important;
+  border-color:var(--pm-border2)!important;
+  color:var(--pm-text)!important;
+}
+
+/* ── SECTION DIVIDER GLOW LINE ── */
+.benefits-sec::before,.rv-sec::before,.faq-sec::before{
+  content:'';display:block;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,215,0,.15),transparent);
+  margin-bottom:0;
+}
+
+/* ── PREMIUM PAGE ENTRY ANIMATION ── */
+@keyframes pmFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.pdp-wrap{animation:pmFadeUp .7s cubic-bezier(.16,1,.3,1) both}
+.stats-bar-new{animation:pmFadeUp .7s .1s cubic-bezier(.16,1,.3,1) both}
+.benefits-sec{animation:pmFadeUp .7s .15s cubic-bezier(.16,1,.3,1) both}
+@media(prefers-reduced-motion:reduce){
+  .pdp-wrap,.stats-bar-new,.benefits-sec{animation:none}
+}
+
+/* ── DARK MODE already dark — remove dark-mode overrides that'd re-lighten ── */
+@media(prefers-color-scheme:dark){
+  body{background:var(--pm-bg)!important;color:var(--pm-text)!important}
+}
 </style>
 </head>
 <body>
@@ -1623,10 +2298,15 @@ a:focus-visible,button:focus-visible{
   <span id="livePasaran">🇸🇬 Draw SGP dalam <strong id="drawCountdown">02:14</strong></span>
 </div>
 
-<div class="announce-bar" id="announceBar">
-  🎁 BONUS DEPOSIT PERTAMA 10% — Langsung Masuk Saldo Otomatis. Min. Deposit Rp 10.000
-  <a href="https://dub.sh/sQaFQGZ" rel="noopener noreferrer" target="_blank">Klaim Sekarang →</a>
-  <button type="button" class="announce-close" id="announceCloseBtn" aria-label="Tutup pengumuman">✕</button>
+<div class="announce-bar" id="announceBar" style="display:flex;align-items:center;padding:0 0 0 0;overflow:hidden">
+  <div class="ann-marquee-wrap">
+    <div class="ann-marquee-track">
+      &nbsp;🎁 BONUS DEPOSIT PERTAMA 10% — Langsung Masuk Saldo Otomatis. Min. Deposit Rp 10.000 &nbsp;·&nbsp; ⚡ WD Kilat 1–3 Menit ke Rekening Bank &amp; E-Wallet &nbsp;·&nbsp; 🏆 6 Pasaran Resmi: SGP · HK · SDY · Taiwan · Japan · Macau &nbsp;·&nbsp; 💬 CS 24/7 Respons &lt;3 Menit via WhatsApp &amp; Telegram &nbsp;·&nbsp;
+      &nbsp;🎁 BONUS DEPOSIT PERTAMA 10% — Langsung Masuk Saldo Otomatis. Min. Deposit Rp 10.000 &nbsp;·&nbsp; ⚡ WD Kilat 1–3 Menit ke Rekening Bank &amp; E-Wallet &nbsp;·&nbsp; 🏆 6 Pasaran Resmi: SGP · HK · SDY · Taiwan · Japan · Macau &nbsp;·&nbsp; 💬 CS 24/7 Respons &lt;3 Menit via WhatsApp &amp; Telegram &nbsp;·&nbsp;
+    </div>
+  </div>
+  <a href="https://dub.sh/sQaFQGZ" class="ann-cta-link" rel="noopener noreferrer" target="_blank">Klaim →</a>
+  <button type="button" class="ann-close-btn" id="announceCloseBtn" aria-label="Tutup pengumuman">✕</button>
 </div>
 
 <nav class="navbar" aria-label="Navigasi Utama">
@@ -1725,6 +2405,41 @@ a:focus-visible,button:focus-visible{
         <img src="https://flagcdn.com/w40/mo.png" alt="Macau Pools Togel Macau" width="32" height="22" loading="lazy" style="border-radius:3px"/>
       </div>
     </div>
+
+    <!-- ── LIVE DRAW WIDGET ── -->
+    <div class="ldw">
+      <div class="ldw-head">
+        <span class="ldw-head-title">🎰 Live Draw Togel</span>
+        <span class="ldw-head-live"><span class="ldw-live-dot"></span>LIVE</span>
+      </div>
+      <div class="ldw-tabs" id="ldwTabs">
+        <button class="ldw-tab-btn ldw-active" data-p="SGP">SGP</button>
+        <button class="ldw-tab-btn" data-p="HK">HK</button>
+        <button class="ldw-tab-btn" data-p="SDY">SDY</button>
+        <button class="ldw-tab-btn" data-p="TWN">TWN</button>
+        <button class="ldw-tab-btn" data-p="JPN">JPN</button>
+        <button class="ldw-tab-btn" data-p="MCU">MCU</button>
+      </div>
+      <div class="ldw-body-inner">
+        <div class="ldw-pasaran-date" id="ldwDate">Singapore Pools · 06-03-2026</div>
+        <div class="ldw-balls">
+          <div class="ldw-ball ldw-spin" id="lb0">?</div>
+          <div class="ldw-ball ldw-spin" id="lb1">?</div>
+          <div class="ldw-ball ldw-spin" id="lb2">?</div>
+          <div class="ldw-ball ldw-spin" id="lb3">?</div>
+        </div>
+        <div class="ldw-details">
+          <span class="ldw-det-badge" id="ldw4d">4D: —</span>
+          <span class="ldw-det-badge" id="ldw3d">3D: —</span>
+          <span class="ldw-det-badge" id="ldw2d">2D: —</span>
+        </div>
+        <div class="ldw-next-row">
+          <span class="ldw-next-lbl">⏱ Draw Berikutnya</span>
+          <span class="ldw-next-val" id="ldwNext">—</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 
@@ -1828,6 +2543,32 @@ a:focus-visible,button:focus-visible{
       <div class="trust-tag">💬 CS 24/7</div>
     </div>
 
+  </div>
+</div>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar-new" aria-label="Statistik JARATOTO">
+  <div class="stats-bar-new-inner">
+    <div class="stat-item-new">
+      <div class="stat-num-new" data-counter data-target="500000" data-suffix="+">500.000+</div>
+      <div class="stat-lbl-new">Member Aktif</div>
+    </div>
+    <div class="stat-item-new">
+      <div class="stat-num-new" data-counter data-target="12547" data-suffix="+">12.547+</div>
+      <div class="stat-lbl-new">Ulasan Bintang 5</div>
+    </div>
+    <div class="stat-item-new">
+      <div class="stat-num-new">1–3 <span style="font-size:14px;-webkit-text-fill-color:#FFD700">mnt</span></div>
+      <div class="stat-lbl-new">WD Kilat</div>
+    </div>
+    <div class="stat-item-new">
+      <div class="stat-num-new">6</div>
+      <div class="stat-lbl-new">Pasaran Resmi</div>
+    </div>
+    <div class="stat-item-new">
+      <div class="stat-num-new">99.9<span style="font-size:14px;-webkit-text-fill-color:#FFD700">%</span></div>
+      <div class="stat-lbl-new">Server Uptime</div>
+    </div>
   </div>
 </div>
 
@@ -2589,23 +3330,41 @@ a:focus-visible,button:focus-visible{
 <!-- ── Back-to-Top Button ── -->
 <button id="backToTop" aria-label="Kembali ke atas" title="Kembali ke atas">▲</button>
 
-<!-- ── Live Chat Multi-Channel Widget ── -->
-<div class="livechat-wrap" id="livechatWrap">
-  <div class="livechat-buttons" id="livechatButtons">
-    <a href="https://t.me/jaratoto" class="lc-btn lc-btn-tg" target="_blank" rel="noopener noreferrer" aria-label="Chat via Telegram">
-      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-      Telegram 24/7
-    </a>
-    <a href="https://dub.sh/sQaFQGZ" class="lc-btn lc-btn-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat via WhatsApp">
+<!-- ── Win Ticker ── -->
+<div id="win-ticker" aria-live="polite"></div>
+
+<!-- ── Enhanced Chat Popup ── -->
+<div class="chat-pop" id="chatPop" role="dialog" aria-label="Live Chat CS JARATOTO" aria-modal="true">
+  <div class="chat-pop-head">
+    <div class="chat-pop-av">🎰</div>
+    <div>
+      <div class="chat-pop-name">CS JARATOTO</div>
+      <div class="chat-pop-status">● Online · Respons &lt;3 menit</div>
+    </div>
+    <button class="chat-pop-x" id="chatPopX" aria-label="Tutup chat">✕</button>
+  </div>
+  <div class="chat-pop-body" id="chatBody">
+    <div class="chat-bubble">Halo! Selamat datang di JARATOTO 👋</div>
+    <div class="chat-bubble" id="chatBubble2" style="opacity:0">Ada yang bisa kami bantu? Kami siap melayani 24/7 🏆</div>
+    <div class="chat-typing-ind" id="chatTyping"><span></span><span></span><span></span></div>
+  </div>
+  <div class="chat-pop-foot">
+    <a href="https://dub.sh/sQaFQGZ" class="chat-ch-btn chat-ch-wa" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp 24/7
+      Chat WhatsApp 24/7
+    </a>
+    <a href="https://t.me/jaratoto" class="chat-ch-btn chat-ch-tg" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      Chat Telegram 24/7
     </a>
   </div>
+</div>
+
+<!-- ── Live Chat Toggle Button (tetap sama) ── -->
+<div class="livechat-wrap" id="livechatWrap">
   <button class="lc-toggle" id="lcToggle" aria-label="Buka live chat" aria-expanded="false">
-    <span class="lc-badge" id="lcBadge" aria-hidden="true">2</span>
-    <!-- Chat icon -->
+    <span class="lc-badge" id="lcBadge" aria-hidden="true">1</span>
     <svg class="ico-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
-    <!-- Close icon -->
     <svg class="ico-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
   </button>
 </div>
@@ -2791,7 +3550,6 @@ try{
 (function(){
   const el=document.getElementById('onlineCount');
   if(!el)return;
-  // Simulate realistic fluctuation around 1200-1500
   let base=1247;
   function update(){
     base+=Math.floor(Math.random()*7)-3;
@@ -2828,20 +3586,220 @@ try{
     const mm=Math.floor((secs%3600)/60);
     const ss=secs%60;
     const pad=n=>String(n).padStart(2,'0');
-    const display=hh>0
-      ?`${hh}j ${pad(mm)}m ${pad(ss)}d`
-      :`${pad(mm)}m ${pad(ss)}d`;
+    const display=hh>0?`${hh}j ${pad(mm)}m ${pad(ss)}d`:`${pad(mm)}m ${pad(ss)}d`;
     el.textContent=display;
     if(lp){
-      // update text node safely
       let found=false;
-      lp.childNodes.forEach(n=>{
-        if(n.nodeType===3&&!found){n.textContent=label+' dalam ';found=true;}
-      });
+      lp.childNodes.forEach(n=>{if(n.nodeType===3&&!found){n.textContent=label+' dalam ';found=true;}});
     }
   }
   tick();
   setInterval(tick,1000);
+})();
+
+/* ══════════════════════════════════════════
+   🆕 STATS BAR COUNTER
+══════════════════════════════════════════ */
+(function(){
+  function animCount(el,target,suffix){
+    const dur=1800,start=performance.now();
+    const run=now=>{
+      const p=Math.min((now-start)/dur,1);
+      const e=1-Math.pow(1-p,3);
+      el.textContent=Math.floor(e*target).toLocaleString('id-ID')+suffix;
+      if(p<1)requestAnimationFrame(run);
+    };
+    requestAnimationFrame(run);
+  }
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el=e.target;
+        animCount(el,parseInt(el.dataset.target),el.dataset.suffix||'');
+        obs.unobserve(el);
+      }
+    });
+  },{threshold:.4});
+  document.querySelectorAll('[data-counter]').forEach(el=>obs.observe(el));
+})();
+
+/* ══════════════════════════════════════════
+   🆕 LIVE DRAW WIDGET
+══════════════════════════════════════════ */
+(function(){
+  // Seed angka berdasarkan tanggal — beda setiap hari
+  function seedRand(seed){
+    let s=seed;
+    return function(){s=Math.imul(48271,s)|0;return(s&0x7fffffff)/0x7fffffff;};
+  }
+  function getDateSeed(){
+    const d=new Date();
+    return d.getFullYear()*10000+((d.getMonth()+1)*100)+d.getDate();
+  }
+  const rng=seedRand(getDateSeed());
+  function randDigit(){return Math.floor(rng()*10)}
+
+  const PASARAN={
+    SGP:{name:'Singapore Pools',flag:'🇸🇬',drawH:17,drawM:45},
+    HK :{name:'Hongkong Pools', flag:'🇭🇰',drawH:23,drawM:0 },
+    SDY:{name:'Sydney Pools',   flag:'🇦🇺',drawH:13,drawM:30},
+    TWN:{name:'Taiwan Pools',   flag:'🇹🇼',drawH:22,drawM:30},
+    JPN:{name:'Japan Pools',    flag:'🇯🇵',drawH:18,drawM:0 },
+    MCU:{name:'Macau Pools',    flag:'🇲🇴',drawH:20,drawM:45},
+  };
+  // Generate unique numbers per pasaran per day
+  const nums={};
+  Object.keys(PASARAN).forEach(k=>{nums[k]=[randDigit(),randDigit(),randDigit(),randDigit()];});
+
+  let current='SGP';
+  let revTimer=null;
+
+  function pad(n){return String(n).padStart(2,'0')}
+  function secsUntil(h,m){
+    const now=new Date();
+    const wib=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Jakarta'}));
+    const ch=wib.getHours(),cm=wib.getMinutes(),cs=wib.getSeconds();
+    let diff=(h*3600+m*60)-(ch*3600+cm*60+cs);
+    if(diff<0)diff+=86400;
+    return diff;
+  }
+  function fmtSecs(s){
+    const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;
+    return h>0?`${h}j ${pad(m)}m ${pad(sec)}d`:`${pad(m)}m ${pad(sec)}d`;
+  }
+
+  function renderBalls(n,revealed){
+    for(let i=0;i<4;i++){
+      const b=document.getElementById('lb'+i);
+      if(!b)continue;
+      if(revealed){b.textContent=n[i];b.className='ldw-ball ldw-reveal';}
+      else{b.textContent='?';b.className='ldw-ball ldw-spin';}
+    }
+  }
+  function showDetails(n){
+    const num=n.join('');
+    const e4=document.getElementById('ldw4d');
+    const e3=document.getElementById('ldw3d');
+    const e2=document.getElementById('ldw2d');
+    if(e4)e4.textContent='4D: '+num;
+    if(e3)e3.textContent='3D: '+num.slice(-3);
+    if(e2)e2.textContent='2D: '+num.slice(-2);
+  }
+
+  function switchPasaran(p){
+    if(!PASARAN[p])return;
+    current=p;
+    const pd=PASARAN[p],n=nums[p];
+    // Update tabs
+    document.querySelectorAll('.ldw-tab-btn').forEach(t=>t.classList.toggle('ldw-active',t.dataset.p===p));
+    // Date
+    const dateEl=document.getElementById('ldwDate');
+    const today=new Date();
+    if(dateEl)dateEl.textContent=`${pd.flag} ${pd.name} · ${today.getDate().toString().padStart(2,'0')}-${(today.getMonth()+1).toString().padStart(2,'0')}-${today.getFullYear()}`;
+    // Animate
+    if(revTimer)clearTimeout(revTimer);
+    renderBalls(n,false);
+    // Reveal one by one
+    for(let i=0;i<4;i++){
+      (function(idx){
+        setTimeout(()=>{
+          const b=document.getElementById('lb'+idx);
+          if(b){b.textContent=n[idx];b.className='ldw-ball ldw-reveal';}
+          if(idx===3)showDetails(n);
+        },400+idx*350);
+      })(i);
+    }
+  }
+
+  // Tab clicks
+  const tabsEl=document.getElementById('ldwTabs');
+  if(tabsEl){
+    tabsEl.addEventListener('click',function(e){
+      const btn=e.target.closest('.ldw-tab-btn');
+      if(btn)switchPasaran(btn.dataset.p);
+    });
+  }
+
+  // Countdown update
+  setInterval(()=>{
+    const pd=PASARAN[current];if(!pd)return;
+    const nEl=document.getElementById('ldwNext');
+    if(nEl)nEl.textContent=fmtSecs(secsUntil(pd.drawH,pd.drawM));
+  },1000);
+
+  // Init
+  switchPasaran('SGP');
+})();
+
+/* ══════════════════════════════════════════
+   🆕 ENHANCED CHAT POPUP
+══════════════════════════════════════════ */
+(function(){
+  const toggle=document.getElementById('lcToggle');
+  const pop=document.getElementById('chatPop');
+  const closeBtn=document.getElementById('chatPopX');
+  const badge=document.getElementById('lcBadge');
+  if(!toggle||!pop)return;
+
+  let opened=false;
+  function openChat(){
+    pop.classList.add('chat-open');
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded','true');
+    if(badge)badge.style.display='none';
+    if(!opened){
+      opened=true;
+      const typ=document.getElementById('chatTyping');
+      const b2=document.getElementById('chatBubble2');
+      setTimeout(()=>{if(typ)typ.style.display='flex';},700);
+      setTimeout(()=>{
+        if(typ)typ.style.display='none';
+        if(b2){b2.style.transition='opacity .3s';b2.style.opacity='1';}
+      },2300);
+    }
+  }
+  function closeChat(){
+    pop.classList.remove('chat-open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  }
+  toggle.addEventListener('click',()=>pop.classList.contains('chat-open')?closeChat():openChat());
+  if(closeBtn)closeBtn.addEventListener('click',closeChat);
+  setTimeout(()=>{if(badge)badge.style.display='none';},5000);
+})();
+
+/* ══════════════════════════════════════════
+   🆕 WIN NOTIFICATION TICKER
+══════════════════════════════════════════ */
+(function(){
+  const ticker=document.getElementById('win-ticker');
+  if(!ticker)return;
+  const list=[
+    {name:'Andi S.',city:'Jakarta',amt:'Rp 2.450.000',pas:'SGP'},
+    {name:'Dewi R.',city:'Surabaya',amt:'Rp 875.000',pas:'HK'},
+    {name:'Budi M.',city:'Bandung',amt:'Rp 5.200.000',pas:'SDY'},
+    {name:'Sri W.',city:'Medan',amt:'Rp 1.125.000',pas:'SGP'},
+    {name:'Reza A.',city:'Semarang',amt:'Rp 3.750.000',pas:'HK'},
+    {name:'Lina K.',city:'Bekasi',amt:'Rp 640.000',pas:'SDY'},
+    {name:'Eko P.',city:'Yogyakarta',amt:'Rp 8.900.000',pas:'SGP'},
+    {name:'Maya T.',city:'Makassar',amt:'Rp 2.200.000',pas:'TWN'},
+    {name:'Hendra F.',city:'Palembang',amt:'Rp 1.800.000',pas:'JPN'},
+    {name:'Nisa A.',city:'Denpasar',amt:'Rp 4.100.000',pas:'MCU'},
+  ];
+  let idx=0;
+  function show(){
+    if(ticker.children.length>=2)return;
+    const w=list[idx%list.length];idx++;
+    const t=document.createElement('div');
+    t.className='win-toast';
+    t.innerHTML=`<div class="win-toast-ico">🏆</div><div><div class="win-toast-name">${w.name} · ${w.city}</div><div class="win-toast-amt">${w.amt}</div><div class="win-toast-pas">Pasaran ${w.pas}</div></div>`;
+    ticker.appendChild(t);
+    setTimeout(()=>{
+      t.classList.add('hiding');
+      setTimeout(()=>t.remove(),400);
+    },4200);
+  }
+  setTimeout(()=>{show();setInterval(()=>show(),8000+Math.random()*4000);},7000);
 })();
 
 </script>
