@@ -34,8 +34,274 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- Schema JSON-LD -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Jaratoto","url":"https://jaratoto.github.io/jaratoto/","description":"Jaratoto – platform togel dan games online terpercaya #1 di Indonesia.","inLanguage":"id-ID"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Apa itu Jaratoto?","acceptedAnswer":{"@type":"Answer","text":"Jaratoto adalah situs togel dan games online terpercaya di Indonesia dengan pasaran SGP, HK, SDY."}},{"@type":"Question","name":"Berapa minimal deposit?","acceptedAnswer":{"@type":"Answer","text":"Minimal deposit hanya Rp 10.000 via bank BCA/BRI/BNI/Mandiri, e-wallet Dana/OVO/GoPay, atau QRIS."}}]}</script>
+<!-- Schema: WebSite + SiteLinksSearchBox -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Jaratoto",
+  "alternateName": ["Jara Toto", "Jaratoto Resmi", "Jaratoto Online"],
+  "url": "https://jaratoto.github.io/jaratoto/",
+  "description": "Jaratoto adalah platform togel dan games online terpercaya #1 di Indonesia. Daftar sekarang, nikmati bonus sambutan 100%, jackpot besar, dan withdraw hanya 3 menit.",
+  "inLanguage": "id-ID",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://jaratoto.github.io/jaratoto/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Schema: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Jaratoto",
+  "alternateName": "Jaratoto Resmi",
+  "url": "https://jaratoto.github.io/jaratoto/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://jaratoto.github.io/jaratoto/logo.png",
+    "width": 400,
+    "height": 100
+  },
+  "description": "Platform togel dan games online terpercaya #1 di Indonesia sejak 2020.",
+  "foundingDate": "2020",
+  "areaServed": { "@type": "Country", "name": "Indonesia" },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "availableLanguage": "Indonesian",
+    "contactOption": "TollFree",
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  },
+  "sameAs": ["https://t.me/jaratoto_official"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "50000",
+    "reviewCount": "12400"
+  }
+}
+</script>
+
+<!-- Schema: OnlineBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineBusiness",
+  "name": "Jaratoto",
+  "url": "https://jaratoto.github.io/jaratoto/",
+  "description": "Situs togel online terpercaya #1 di Indonesia dengan pasaran SGP, HK, SDY, Macau, Japan, dan Taiwan.",
+  "currenciesAccepted": "IDR",
+  "paymentAccepted": "Bank Transfer, BCA, BNI, BRI, Mandiri, Dana, OVO, GoPay, ShopeePay, QRIS",
+  "priceRange": "Rp10.000 - Rp100.000.000",
+  "openingHours": "Mo-Su 00:00-23:59",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Game & Pasaran Togel",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Togel Singapore (SGP)",
+        "description": "Pasaran togel Singapore resmi, result Senin/Rabu/Kamis/Sabtu/Minggu pukul 17:45 WIB",
+        "priceCurrency": "IDR",
+        "price": "10000",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Togel Hongkong (HK)",
+        "description": "Pasaran togel Hongkong resmi, result setiap hari pukul 23:00 WIB",
+        "priceCurrency": "IDR",
+        "price": "10000",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Togel Sydney (SDY)",
+        "description": "Pasaran togel Sydney resmi, result setiap hari pukul 13:50 WIB",
+        "priceCurrency": "IDR",
+        "price": "10000",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Bonus New Member 100%",
+        "description": "Bonus deposit pertama 100% untuk member baru, minimum deposit Rp 50.000",
+        "priceCurrency": "IDR",
+        "price": "0",
+        "availability": "https://schema.org/InStock"
+      }
+    ]
+  }
+}
+</script>
+
+<!-- Schema: MobileApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Jaratoto App",
+  "operatingSystem": "ANDROID, IOS",
+  "applicationCategory": "EntertainmentApplication",
+  "description": "Aplikasi Jaratoto untuk Android dan iOS. Togel online, slot, dan casino di genggaman Anda.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IDR" },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "25000"
+  },
+  "featureList": ["Togel SGP HK SDY", "Live Casino", "Slot 1000+", "Sports Betting", "Withdraw 3 Menit", "Bonus 100%"],
+  "fileSize": "18MB"
+}
+</script>
+
+<!-- Schema: FAQPage (lengkap) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Apa itu Jaratoto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jaratoto adalah platform togel dan games online terpercaya #1 di Indonesia yang telah beroperasi sejak 2020. Tersedia pasaran SGP, HK, SDY, Macau, Japan, dan Taiwan dengan lebih dari 500.000 member aktif."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Berapa minimal deposit di Jaratoto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minimal deposit di Jaratoto hanya Rp 10.000. Untuk klaim bonus new member 100%, minimal deposit Rp 50.000 via BCA, BRI, BNI, Mandiri, Dana, OVO, GoPay, ShopeePay, atau QRIS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Berapa lama proses withdraw di Jaratoto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Proses withdraw di Jaratoto hanya 3 menit langsung masuk ke rekening atau e-wallet Anda, tersedia 24 jam sehari 7 hari seminggu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apakah Jaratoto aman dan terpercaya?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya, Jaratoto berlisensi resmi PAGCOR, enkripsi SSL 256-bit, RNG bersertifikat iTech Labs, dan telah beroperasi sejak 2020 dengan 500.000+ member aktif."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bagaimana cara daftar di Jaratoto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Klik tombol Daftar Sekarang, isi data diri (nama, nomor HP, password), verifikasi OTP, lalu deposit minimal Rp 10.000. Proses hanya 2 menit dan akun langsung aktif."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apa saja bonus yang tersedia di Jaratoto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bonus new member 100% untuk deposit pertama, cashback mingguan 10%, komisi referral 20% seumur hidup, dan freebet harian untuk semua member aktif."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apakah ada link alternatif Jaratoto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya, hubungi CS kami via Live Chat atau WhatsApp 24 jam untuk mendapatkan link alternatif Jaratoto terbaru yang aktif."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apakah Jaratoto tersedia di smartphone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya, tersedia di browser mobile maupun aplikasi Android dan iOS (18MB) dengan fitur lengkap, notifikasi result real-time, dan login biometrik."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Schema: ItemList Pasaran -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Pasaran Togel Tersedia di Jaratoto",
+  "numberOfItems": 6,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Togel Singapore (SGP)", "url": "https://jaratoto.github.io/jaratoto/#draw" },
+    { "@type": "ListItem", "position": 2, "name": "Togel Hongkong (HK)",   "url": "https://jaratoto.github.io/jaratoto/#draw" },
+    { "@type": "ListItem", "position": 3, "name": "Togel Sydney (SDY)",    "url": "https://jaratoto.github.io/jaratoto/#draw" },
+    { "@type": "ListItem", "position": 4, "name": "Togel Macau",           "url": "https://jaratoto.github.io/jaratoto/#draw" },
+    { "@type": "ListItem", "position": 5, "name": "Togel Japan",           "url": "https://jaratoto.github.io/jaratoto/#draw" },
+    { "@type": "ListItem", "position": 6, "name": "Togel Taiwan",          "url": "https://jaratoto.github.io/jaratoto/#draw" }
+  ]
+}
+</script>
+
+<!-- Schema: Product + Reviews -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Jaratoto – Platform Togel Online",
+  "description": "Platform togel dan games online terpercaya #1 di Indonesia dengan pasaran lengkap, bonus besar, dan withdraw cepat.",
+  "brand": { "@type": "Brand", "name": "Jaratoto" },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "50000",
+    "reviewCount": "12400"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Budi Santoso" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Platform terbaik! Withdraw cepat, tidak pernah ada masalah dalam 2 tahun bermain.",
+      "datePublished": "2024-11-15"
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Siti Rahayu" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Menang jackpot SGP 4D dan dana langsung cair dalam 3 menit. Luar biasa!",
+      "datePublished": "2024-12-02"
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Ahmad Fauzi" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "CS responsif 24 jam. Bonus referral masuk otomatis setiap bulan.",
+      "datePublished": "2025-01-08"
+    }
+  ]
+}
+</script>
 
 <style>
 /* ============================================================
@@ -2204,7 +2470,7 @@ footer {
     <h1>JARATOTO</h1>
 
     <img
-      src="banner.jpg"
+      src="https://i.ibb.co.com/8DszzpLt/jaratoto.png"
       alt="Jackpot Fortune – Win Big & Hit the Jackpot di Jaratoto Situs Togel Online Terpercaya"
       width="600" height="800"
       loading="eager" fetchpriority="high"
